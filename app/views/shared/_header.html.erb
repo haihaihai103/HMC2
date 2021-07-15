@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Headers - 15</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <div class="brand">HGC2</div>
+      </div>
+        <nav class="nav">
+          <ul class="nav__wrapper">
+            <li><%= link_to 'ホーム', root_path, class: "nav__item" %></li>
+            <li><%= link_to '概要', "/", class: "nav__item" %></li>
+            <li><%= link_to '患者情報登録', "/", class: "nav__item" %></li>
+            <li><%= link_to '患者情報検索', "/", class: "nav__item" %></li>
+            <li><%= link_to 'お問い合わせ', "/", class: "nav__item" %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav__item"%></li>
+            <% else %>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "nav__item" %></li>
+            <% end %>
+          </ul>
+        </nav>
+        
+    </header>
+    <!-- Header End -->
+
+  </body>
+</html>
