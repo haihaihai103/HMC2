@@ -6,7 +6,10 @@ class User < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :belong
+  belongs_to :prefecture
 
+  has_many :patients
+  
   with_options presence: true do
     validates :belong_id
     validates :birth_date
