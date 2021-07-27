@@ -1,0 +1,44 @@
+.detail-table {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/*.detail-patient {
+  width: 20%;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+} */
+
+.tab-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab-label {
+  color: White;
+  background: LightGray;
+  margin-right: 5px;
+  padding: 3px 12px;
+  order: -1;
+}
+.tab-content {
+  width: 100%;
+  display: none;
+}
+/* アクティブなタブ */
+.tab-switch:checked+.tab-label {
+  background: DeepSkyBlue;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+   display: block;
+}
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
+}
+
+/* 患者じょうほう表の */
+.input-name {
+  background-color: white;
+}

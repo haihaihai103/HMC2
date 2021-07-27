@@ -1,0 +1,189 @@
+<%= render "shared/header" %>
+
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'>
+    <div class='account-page__inner--left account-page__header'>
+      <%= form_with model: @patient, url: patients_path, local: true do |f|%>
+      <h2>New Patient Registration</h2>
+      <h5>新規患者の登録</h5>
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
+    <div class='account-page__inner--right user-form'>
+        <div class='field'>
+          <label class='field-label'>フリガナ(全角)</label>
+          <span class="indispensable">必須</span>
+          <div class='field-input'>
+            <%= f.text_field :kana01, class:"input-name", id:"kana01", placeholder:"例) アイチタロウ" %>
+          </div>
+        </div>
+         <div class='field'>
+          <label class='field-label'>お名前(全角)</label>
+          <div class='field-input'>
+            <%= f.text_field :name01, class:"input-name", id:"name01", placeholder:"例) 愛知太朗" %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>性別</label>
+          <span class="indispensable">必須</span>
+          <br class='field-input'>
+            <%= f.radio_button :gender, '男' %>男
+            <%= f.radio_button :gender, '女' %>女
+            <%= f.radio_button :gender, '不明' %>不明
+          <br>
+        </div>
+        <div class='field'>
+          <label class='field-label'>年齢</label>
+          <div class='field-input'>
+            <%= f.text_field :age, class:"input-name", id:"age", placeholder:"例）25" %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>国籍</label>
+          <div class='field-input'>
+            <%= f.text_field :nationality, class:"input-name", id:"nationality" %>
+          </div>
+        </div>
+         <div class='field'>
+          <label class='field-label'>郵便番号</label>
+          <div class='field-input'>
+            <%= f.text_field :postcode, class:"input-name", id:"postcode", placeholder:"例) 123-4567" %>
+          </div>
+        </div>
+        <div class='field'>
+           <label class='field-label'>現住所</label>
+           <i>都道府県</i>
+          <div class='field-input'>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"input_name", id:"prefecture_id"}) %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>現住所</label>
+          <i>市町村</i>
+          <div class='field-input'>
+            <%= f.text_field :city, class:"input-name", id:"city", placeholder:"例) 〇〇市〇〇町" %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>現住所</label>
+          <i>丁目</i>
+          <div class='field-input'>
+            <%= f.text_field :town, class:"input-name", id:"town", placeholder:"例) 〇〇1-1-1" %>
+          </div>
+        </div>
+        <div class='field'>
+        <label class='field-label'>電話番号</label>
+          <i>メイン</i>
+          <div class='field-input'>
+            <%= f.text_field :phone01, class:"input-name", id:"phone01", placeholder:"例) 0901234567" %>
+          </div>
+        </div>
+        <div class='field'>
+        <label class='field-label'>電話番号</label>
+          <i>サブ(自宅など)</i>
+          <div class='field-input'>
+            <%= f.text_field :phone02, class:"input-name", id:"phone02", placeholder:"例) 0901234567" %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>Eメール</label>
+          <div class='field-input'>
+            <%= f.text_field :email, class:"input-name", id:"email" %>
+          </div>
+        </div>
+        <div class='field'>
+           <label class='field-label'>担当保健所</label>
+           <span class="indispensable">必須</span>
+          <div class='field-input'>
+            <%= f.collection_select(:belong_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong_id"}) %>
+          </div>
+        </div>
+        <div class='field'>
+           <label class='field-label'>関係保健所</label>
+          <div class='field-input'>
+            <%= f.collection_select(:belong01_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong01_id"}) %>
+          </div>
+        </div>
+        <div class='field'>
+           <label class='field-label'>関係保健所</label>
+          <div class='field-input'>
+            <%= f.collection_select(:belong02_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong02_id"}) %>
+          </div>
+        </div>
+        <div class='field'>
+           <label class='field-label'>関係保健所</label>
+          <div class='field-input'>
+            <%= f.collection_select(:belong03_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong03_id"}) %>
+          </div>
+        </div>
+        <div class='field'>
+          <p>勤務先または学校など</p>
+          <label class='field-label'>勤務先</label>
+          <div class='field-input'>
+            <%= f.text_field :company, class:"input-name", id:"company", placeholder:"例) 〇〇株式会社〇〇支店"%>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>所在地</label>
+          <div class='field-input'>
+            <%= f.text_field :location, class:"input-name", id:"location", placeholder:"例) 〇〇市〇〇区〇〇1-1-1"%>
+          </div>
+        </div>
+        <div class='field'>
+        <label class='field-label'>電話番号</label>
+          <div class='field-input'>
+            <%= f.text_field :phone03, class:"input-name", id:"phone03", placeholder:"例) 0901234567" %>
+          </div>
+        </div>
+        <div class='field'>
+          <p>緊急連絡先</p>
+          <label class='field-label'>フリガナ(全角)</label>
+          <div class='field-input'>
+            <%= f.text_field :kana02, class:"input-name", id:"kana02", placeholder:"例) アイチタロウ" %>
+          </div>
+        </div>
+         <div class='field'>
+          <label class='field-label'>お名前(全角)</label>
+          <div class='field-input'>
+            <%= f.text_field :name02, class:"input-name", id:"name02", placeholder:"例) 愛知太朗" %>
+          </div>
+        </div>
+        <div class='field'>
+          <label class='field-label'>続柄</label>
+          <div class='field-input'>
+            <%= f.text_field :relationship, class:"input-name", id:"name02", placeholder:"例) 父、娘など" %>
+          </div>
+        </div>
+        <div class='field'>
+        <label class='field-label'>電話番号</label>
+          <i>メイン</i>
+          <div class='field-input'>
+            <%= f.text_field :phone04, class:"input-name", id:"phone04", placeholder:"例) 0901234567" %>
+          </div>
+        </div>
+         <div class='field'>
+        <label class='field-label'>電話番号</label>
+          <i>サブ(自宅など)</i>
+          <div class='field-input'>
+            <%= f.text_field :phone05, class:"input-name", id:"phone05", placeholder:"例) 0901234567" %>
+          </div>
+        </div>
+        <div class='field'>
+        <label class='field-label'>保健所ID</label>
+          <i>管理番号</i>
+          <div class='field-input'>
+            <%= f.text_field :number, class:"input-name", id:"number", placeholder:"例) 21220" %>
+          </div>
+        </div>
+        <label class='field-label'>自由記載欄</label>
+          <i>(ご自由に記載してください)</i>
+          <div class='field-input'>
+            <%= f.text_area :free, class:"input-name", id:"free", rows: "6", placeholder:"例) この方は外国籍の方で、日本語での意思疎通が難しい。また、親族などおらず会社の責任者が緊急連絡先となっている。" %>
+          </div>
+        </div>
+        <div class='actions'>
+          <%= f.submit "患者登録", class: 'btn'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
