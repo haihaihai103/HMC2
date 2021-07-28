@@ -38,5 +38,5 @@ class Belong < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :devise
-
+  has_many :patients
 end
