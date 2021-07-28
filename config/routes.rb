@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   get '/users', to: 'devise/registrations#new'
   resources :patients do
     get :chart, on: :collection
-    #get :collection, on: :collection
   end
 end

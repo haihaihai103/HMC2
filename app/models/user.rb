@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :belong
   belongs_to :prefecture
 
+
   has_many :patients
   
   with_options presence: true do

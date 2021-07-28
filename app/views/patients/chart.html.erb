@@ -57,31 +57,30 @@
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
 </form>
-<%#登録した患者情報を表形式で表示%>
+
+<%#ここから%>
 <span class="btn">患者一覧</span>
-<table class="type06">
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th>患者フリガナ</th>
-      <th>患者氏名</th>
-      <th>性別</th>
-      <th>年齢</th>
-      <th>担当保健所</th>
-      <th>発表日</th>
-      <th>滞在先</th>
+    <tr align="center">
+      <th scope="col">#</th>
+      <th scope="col">患者フリガナ</th>
+      <th scope="col">患者氏名</th>
+      <th scope="col">性別</th>
+      <th scope="col">年齢</th>
+      <th scope="col">担当保健所</th>
     </tr>
   </thead>
   <tbody>
-    <% @patients.each do |patient| %>
+      <% @patients.each do |patient| %>
     <tr align="center">
+      <td><%= patient.id %></td>
       <td><%= link_to patient.kana01, patient_path(patient.id) %></td>
       <td><%= patient.name01 %></td>
       <td><%= patient.gender %></td>
       <td><%= patient.age %></td>
       <td><%= patient.belong.name %></td>
-      <td><%= patient.phone01 %></td>
-      <td><%= patient.email %></td>
     </tr>
+    <% end %>
   </tbody>
-  <% end %>
 </table>

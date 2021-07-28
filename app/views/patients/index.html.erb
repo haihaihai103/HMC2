@@ -1,5 +1,26 @@
 <%= render "shared/header" %>
 
-
-<p>本日の愛知県感染者状況</p>
-<p>患者情報の登録及び検索にはログインが必要です</p>
+<!-- bootstrapより拝借 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- グラフ -->
+<div class="alert alert-primary" role="alert">
+  <%= Date.today %>  愛知県の感染状況
+</div>
+<div class="main">
+  <label class="text-user">新規感染者数推移（総人数：<%= @patients.count %>）</label>
+  <div class="graph">
+    <%= line_chart @patients_count, download: true, colors: ['#FF4F02'] %>
+  </div>
+</div>
+<div class="main">
+  <label class="text-user">感染者年代別割合（総人数：<%= @patients.count %>)</label>
+  <div class="graph">
+    <%= pie_chart Patient.group(:age_id).count %>
+  </div>
+</div>
+<div class="main">
+  <label class="text-user">感染者男女割合（総人数：<%= @patients.count %>)</label>
+  <div class="graph">
+    <%= pie_chart Patient.group(:gender).count %>
+  </div>
+</div>

@@ -34,7 +34,7 @@
         <div class='field'>
           <label class='field-label'>年齢</label>
           <div class='field-input'>
-            <%= f.text_field :age, class:"input-name", id:"age", placeholder:"例）25" %>
+             <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"input_name", id:"age_id"}) %>
           </div>
         </div>
         <div class='field'>
@@ -98,24 +98,6 @@
           </div>
         </div>
         <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong01_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong01_id"}) %>
-          </div>
-        </div>
-        <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong02_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong02_id"}) %>
-          </div>
-        </div>
-        <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong03_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong03_id"}) %>
-          </div>
-        </div>
-        <div class='field'>
           <p>勤務先または学校など</p>
           <label class='field-label'>勤務先</label>
           <div class='field-input'>
@@ -158,13 +140,6 @@
           <i>メイン</i>
           <div class='field-input'>
             <%= f.text_field :phone04, class:"input-name", id:"phone04", placeholder:"例) 0901234567" %>
-          </div>
-        </div>
-         <div class='field'>
-        <label class='field-label'>電話番号</label>
-          <i>サブ(自宅など)</i>
-          <div class='field-input'>
-            <%= f.text_field :phone05, class:"input-name", id:"phone05", placeholder:"例) 0901234567" %>
           </div>
         </div>
         <div class='field'>

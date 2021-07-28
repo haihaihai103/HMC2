@@ -1,10 +1,13 @@
 class PatientsController < ApplicationController
   before_action :patient_set, only: [:edit, :show, :update]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :search_product, only: [:search]
   
 
 def index
+  @patients = Patient.all.order("created_at DESC")
+  @patients_count = Patient.group_by_day(:created_at).size
+  @patient_today = Patient.where(created_at: Date.today.all_day).count
 end
 
 def new
