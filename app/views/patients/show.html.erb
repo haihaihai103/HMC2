@@ -4,131 +4,107 @@
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
       <%= form_with model: @patient, local: true do |f|%>
-      <h2>Patient Data</h2>
-      <h5>患者情報の詳細</h5>
+      <h2>患者情報の詳細</h2>
+      <h4>Patient Data</h4>
+      <div class='actions'>
+      <%= link_to "編集", edit_patient_path, method: :get, class: 'btn' %>
     </div>
-    <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-    <div class="tab-wrap">
+    </div>
   <div class='account-page__inner--right user-form'>
-        <div class='field'>
-
-        <table class="detail-table">
-         <tbody>
-          <tr>
-          <th class='detail-patient'>フリガナ</label>
-          <td class="input-name"><%= @patient.kana01 %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>氏名</label>
-          <td class="input-name"><%= @patient.name01 %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>性別</label>
-          <td class="input-name"><%= @patient.gender %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>年齢</label>
-          <td class="input-name"><%= @patient.age %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>国籍</label>
-          <td class="input-name"><%= @patient.nationality %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>郵便番号</label>
-          <td class="input-name"><%= @patient.postcode %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>現住所（都道府県）</label>
-          <td class="input-name"><%= @patient.prefecture.name %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>市町村</label>
-          <td class="input-name"><%= @patient.city %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>丁目</label>
-          <td class="input-name"><%= @patient.town %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>電話番号</label>
-          <td class="input-name"><%= @patient.phone01 %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>電話番号</label>
-          <td class="input-name"><%= @patient.phone02 %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>Eメール</label>
-          <td class="input-name"><%= @patient.email %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>担当保健所</label>
-          <td class="input-name"><%= @patient.belong.name %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>関係保健所</label>
-          <td class="input-name"><%= @patient.belong.name %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>関係保健所</label>
-          <td class="input-name"><%= @patient.belong.name %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>関係保健所</label>
-          <td class="input-name"><%= @patient.belong.name %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>勤務先または学校</label>
-          <td class="input-name"><%= @patient.company %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>所在地</label>
-          <td class="input-name"><%= @patient.location %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>電話番号</label>
-          <td class="input-name"><%= @patient.phone03 %></td>
-          </tr>
-            <th class='detail-patient'>緊急連絡先フリガナ</label>
-          <td class="input-name"><%= @patient.kana02 %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>氏名</label>
-          <td class="input-name"><%= @patient.name02 %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>続柄</label>
-          <td class="input-name"><%= @patient.relationship %></td>
-          </tr>
-           </tr>
-            <th class='detail-patient'>電話番号</label>
-          <td class="input-name"><%= @patient.phone04 %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>電話番号</label>
-          <td class="input-name"><%= @patient.phone05 %></td>
-          </tr>
-           <tr>
-          <th class='detail-patient'>保健所ID</label>
-          <td class="input-name"><%= @patient.number %></td>
-          </tr>
-          <tr>
-          <th class='detail-patient'>備考</label>
-          <td class="input-name"><%= @patient.free %></td>
-          </tr>
-          </tbody>
-          <div class='actions'>
-            <%= link_to "編集", edit_patient_path, method: :get, class: 'btn'%>
-          </div>
+    <div class='field'>
+      <table class="table">
+      <tbody>
+      <tr>
+      <th scope="col">フリガナ</label>
+      <td class="input-name"><%= @patient.kana01 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>氏名</label>
+      <td class="input-name"><%= @patient.name01 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>性別</label>
+      <td class="input-name"><%= @patient.gender %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>年齢</label>
+      <td class="input-name"><%= @patient.age %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>国籍</label>
+      <td class="input-name"><%= @patient.nationality %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>郵便番号</label>
+      <td class="input-name"><%= @patient.postcode %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>現住所（都道府県）</label>
+      <td class="input-name"><%= @patient.prefecture.name %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>現住所（市町村）</label>
+      <td class="input-name"><%= @patient.city %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>現住所（丁目）</label>
+      <td class="input-name"><%= @patient.town %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>電話番号（メイン）</label>
+      <td class="input-name"><%= @patient.phone01 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>電話番号（サブ）</label>
+      <td class="input-name"><%= @patient.phone02 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>Eメール</label>
+      <td class="input-name"><%= @patient.email %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>担当保健所</label>
+      <td class="input-name"><%= @patient.belong.name %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>勤務先または学校</label>
+      <td class="input-name"><%= @patient.company %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>所在地</label>
+      <td class="input-name"><%= @patient.location %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>電話番号</label>
+      <td class="input-name"><%= @patient.phone03 %></td>
+      </tr>
+      <th class='detail-patient'>緊急連絡先(氏名フリガナ)</label>
+      <td class="input-name"><%= @patient.kana02 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>氏名</label>
+      <td class="input-name"><%= @patient.name02 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>続柄</label>
+      <td class="input-name"><%= @patient.relationship %></td>
+      </tr>
+      </tr>
+      <th class='detail-patient'>電話番号</label>
+      <td class="input-name"><%= @patient.phone04 %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>保健所ID</label>
+      <td class="input-name"><%= @patient.number %></td>
+      </tr>
+      <tr>
+      <th class='detail-patient'>備考</label>
+      <td class="input-name"><%= @patient.free %></td>
+      </tr>
+      </tbody>
       </div>
     <% end %>
-  </div>
-  </li>
-</ul>
-    
+    </div>
 </div>
-</div>
-    
+    </div>
+      

@@ -1,0 +1,31 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+ 
+    wb.add_worksheet(name: "患者一覧") do |sheet|
+ 
+        styles = {
+            header: wb.styles.add_style(bg_color: 'DDDDDD'),
+            cell: wb.styles.add_style(bg_color: 'DDDDDD'),
+        }
+ 
+        sheet.add_row do |row|
+            row.add_cell('ID', style: styles[:header])
+            row.add_cell('患者フリガナ', style: styles[:header])
+            row.add_cell('患者氏名', style: styles[:header])
+            row.add_cell('性別', style: styles[:header])
+            row.add_cell('年代', style: styles[:header])
+            row.add_cell('担当保健所', style: styles[:header])
+        end
+ 
+        @results.each do |patient|
+            sheet.add_row do |row|
+                row.add_cell(patient.id, style: styles[:cell])
+                row.add_cell(patient.kana01, style: styles[:cell])
+                row.add_cell(patient.name01, style: styles[:cell])
+                row.add_cell(patient.gender, style: styles[:cell])
+                row.add_cell(patient.age, style: styles[:cell])
+                row.add_cell(patient.belong.name, style: styles[:cell])
+            end
+        end
+    end
+end

@@ -4,8 +4,8 @@
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
       <%= form_with model: @patient, url: patients_path, local: true do |f|%>
-      <h2>New Patient Registration</h2>
-      <h5>新規患者の登録</h5>
+      <h2>新規患者の登録</h2>
+      <h4>New Patient Registration</h4>
       <%= render 'shared/error_messages', model: f.object %>
     </div>
     <div class='account-page__inner--right user-form'>
@@ -34,7 +34,14 @@
         <div class='field'>
           <label class='field-label'>年齢</label>
           <div class='field-input'>
-             <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"input_name", id:"age_id"}) %>
+            <%= f.radio_button :age, '10歳未満' %>10歳未満
+            <%= f.radio_button :age, '10歳代' %>10歳代
+            <%= f.radio_button :age, '20歳代' %>20歳代
+            <%= f.radio_button :age, '30歳代' %>30歳代
+            <%= f.radio_button :age, '40歳代' %>40歳代
+            <%= f.radio_button :age, '50歳代' %>50歳代
+            <%= f.radio_button :age, '60歳代' %>60歳代
+            <%= f.radio_button :age, '70歳代以上' %>70歳代以上
           </div>
         </div>
         <div class='field'>
@@ -53,7 +60,7 @@
            <label class='field-label'>現住所</label>
            <i>都道府県</i>
           <div class='field-input'>
-            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"input_name", id:"prefecture_id"}) %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected: 24}, {class:"input_name", id:"prefecture_id"}) %>
           </div>
         </div>
         <div class='field'>
@@ -79,7 +86,7 @@
         </div>
         <div class='field'>
         <label class='field-label'>電話番号</label>
-          <i>サブ(自宅など)</i>
+          <i>サブ</i>
           <div class='field-input'>
             <%= f.text_field :phone02, class:"input-name", id:"phone02", placeholder:"例) 0901234567" %>
           </div>
@@ -118,13 +125,13 @@
         </div>
         <div class='field'>
           <p>緊急連絡先</p>
-          <label class='field-label'>フリガナ(全角)</label>
+          <label class='field-label'>患者フリガナ(全角)</label>
           <div class='field-input'>
             <%= f.text_field :kana02, class:"input-name", id:"kana02", placeholder:"例) アイチタロウ" %>
           </div>
         </div>
          <div class='field'>
-          <label class='field-label'>お名前(全角)</label>
+          <label class='field-label'>氏名(全角)</label>
           <div class='field-input'>
             <%= f.text_field :name02, class:"input-name", id:"name02", placeholder:"例) 愛知太朗" %>
           </div>
@@ -137,7 +144,6 @@
         </div>
         <div class='field'>
         <label class='field-label'>電話番号</label>
-          <i>メイン</i>
           <div class='field-input'>
             <%= f.text_field :phone04, class:"input-name", id:"phone04", placeholder:"例) 0901234567" %>
           </div>

@@ -1,8 +1,8 @@
 class PatientsController < ApplicationController
   before_action :patient_set, only: [:edit, :show, :update]
   before_action :authenticate_user!, except: [:index]
-  before_action :search_product, only: [:search]
-  
+  before_action :search_product, only: [:excel, :chart, :search]
+
 
 def index
   @patients = Patient.all.order("created_at DESC")
@@ -39,16 +39,28 @@ def chart
 end
 
 def search
-  @results = @q.result.includes(:patient)
+  @patients = Patient.all.order("created_at DESC")
+  @results = @q.result
 end
 
 def show
 end
 
+#excelについて
+def excel
+  @results = @q.result
+  respond_to do |format|
+    format.html
+    format.xlsx { |html| html.tablet
+        response.headers['Content-Disposition'] = 'attachment; filename="患者リスト"'+ Time.zone.now.strftime('%Y%m%d%H%M%S') + '.xlsx'
+    }
+  end
+end
+
 private
 
 def patient_params
-  params.require(:patient).permit(:kana01, :name01, :gender, :nationality, :postcode, :prefecture_id, :city, :town, :phone01, :phone02, :email, :belong_id, :belong01_id, :belong02_id, :belong03_id, :company, :location, :phone03, :kana02, :name02, :relationship, :phone04, :phone05, :number, :free).merge(user_id: current_user.id)
+  params.require(:patient).permit(:kana01, :name01, :gender, :age, :nationality, :postcode, :prefecture_id, :city, :town, :phone01, :phone02, :email, :belong_id, :company, :location, :phone03, :kana02, :name02, :relationship, :phone04, :number, :free).merge(user_id: current_user.id)
 end
 
 def search_product
@@ -58,5 +70,4 @@ end
 def patient_set
   @patient = Patient.find(params[:id])
 end
-
 end

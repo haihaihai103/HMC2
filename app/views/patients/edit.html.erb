@@ -4,9 +4,9 @@
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
       <%= form_with(model: @patient, local: true) do |f| %>
-      <h2>New Patient Edit</h2>
-      <h5>新規患者の編集</h5>
-      <%#= render 'shared/error_messages', model: f.object %>
+      <h2>新規患者の編集</h2>
+      <h4>New Patient Edit</h4>
+      <%= render 'shared/error_messages', model: f.object %>      
     </div>
     <div class='account-page__inner--right user-form'>
         <div class='field'>
@@ -34,7 +34,14 @@
         <div class='field'>
           <label class='field-label'>年齢</label>
           <div class='field-input'>
-            <%= f.text_field :age, class:"input-name", id:"age", placeholder:"例）25" %>
+            <%= f.radio_button :age, '10歳未満' %>10歳未満
+            <%= f.radio_button :age, '10歳代' %>10歳代
+            <%= f.radio_button :age, '20歳代' %>20歳代
+            <%= f.radio_button :age, '30歳代' %>30歳代
+            <%= f.radio_button :age, '40歳代' %>40歳代
+            <%= f.radio_button :age, '50歳代' %>50歳代
+            <%= f.radio_button :age, '60歳代' %>60歳代
+            <%= f.radio_button :age, '70歳代以上' %>70歳代以上
           </div>
         </div>
         <div class='field'>
@@ -79,7 +86,7 @@
         </div>
         <div class='field'>
         <label class='field-label'>電話番号</label>
-          <i>サブ(自宅など)</i>
+          <i>サブ</i>
           <div class='field-input'>
             <%= f.text_field :phone02, class:"input-name", id:"phone02", placeholder:"例) 0901234567" %>
           </div>
@@ -96,25 +103,6 @@
           <div class='field-input'>
             <%= f.collection_select(:belong_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong_id"}) %>
           </div>
-        </div>
-        <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong01_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong01_id"}) %>
-          </div>
-        </div>
-        <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong02_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong02_id"}) %>
-          </div>
-        </div>
-        <div class='field'>
-           <label class='field-label'>関係保健所</label>
-          <div class='field-input'>
-            <%= f.collection_select(:belong03_id, Belong.all, :id, :name, {}, {class:"input_name", id:"belong03_id"}) %>
-          </div>
-        </div>
         <div class='field'>
           <p>勤務先または学校など</p>
           <label class='field-label'>勤務先</label>
@@ -160,13 +148,6 @@
             <%= f.text_field :phone04, class:"input-name", id:"phone04", placeholder:"例) 0901234567" %>
           </div>
         </div>
-         <div class='field'>
-        <label class='field-label'>電話番号</label>
-          <i>サブ(自宅など)</i>
-          <div class='field-input'>
-            <%= f.text_field :phone05, class:"input-name", id:"phone05", placeholder:"例) 0901234567" %>
-          </div>
-        </div>
         <div class='field'>
         <label class='field-label'>保健所ID</label>
           <i>管理番号</i>
@@ -180,10 +161,10 @@
             <%= f.text_area :free, class:"input-name", id:"free", rows: "6", placeholder:"例) この方は外国籍の方で、日本語での意思疎通が難しい。また、親族などおらず会社の責任者が緊急連絡先となっている。" %>
           </div>
         </div>
-        <div class='actions'>
+      </div>
+       <div class='actions'>
           <%= f.submit "患者情報編集", class: 'btn' %>
-          <%= link_to 'もどる', patient_path, class: 'btn' %>
-        </div>
+          <%= link_to 'もどる', patient_path, class: 'qqq' %>
       </div>
     <% end %>
   </div>

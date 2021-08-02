@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+
+<div class="alert alert-primary" role="alert">
+  検索結果表示
+</div>
+
+<% if @results.length !=0 %>
+<table class="table table-striped">
+  <thead>
+    <tr align="center">
+      <th scope="col">No.</th>
+      <th scope="col">患者フリガナ</th>
+      <th scope="col">患者氏名</th>
+      <th scope="col">性別</th>
+      <th scope="col">年齢</th>
+      <th scope="col">担当保健所</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @results.each do |patient| %>
+    <tr align="center">
+      <td><%= patient.id %></td>
+      <td><%= link_to patient.kana01, patient_path(patient.id) %></td>
+      <td><%= patient.name01 %></td>
+      <td><%= patient.gender %></td>
+      <td><%= patient.age %></td>
+      <td><%= patient.belong.name %></td>
+    </tr>
+    <% end %>
+    <% else %>
+    該当の患者はいません
+    <% end %>
+  </tbody>
+  
+</table>

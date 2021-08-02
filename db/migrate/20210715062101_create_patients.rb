@@ -4,7 +4,7 @@ class CreatePatients < ActiveRecord::Migration[6.0]
       t.string :kana01
       t.string :name01, null:false
       t.string :gender, null:false
-      t.string :age_id
+      t.string :age
       t.string :nationality
       t.integer :postcode
       t.string :prefecture_id
