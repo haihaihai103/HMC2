@@ -1,69 +1,42 @@
 <%= render "shared/header" %>
 
-<!DOCTYPE html>
-<!-- bootstrapより拝借 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<%#検索条件選択画面%>
-<form class="row g-3 needs-validation" novalidate>
-  <div class="col-md-4">
-    <label for="validationCustom01" class="form-label">患者フリガナ</label>
-    <input type="text" class="form-control" id="validationCustom01" value="アイチタロウ" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationCustom02" class="form-label">患者氏名</label>
-    <input type="text" class="form-control" id="validationCustom02" value="愛知太郎" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationCustomUsername" class="form-label">国籍</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="inputGroupPrepend"></span>
-      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationCustom03" class="form-label">担当保健所</label>
-    <input type="text" class="form-control" id="validationCustom03" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-3">
-    <label for="validationCustom04" class="form-label">滞在先</label>
-    <select class="form-select" id="validationCustom04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid state.
-    </div>
-  </div>
-  <div class="col-md-3">
-    <label for="validationCustom05" class="form-label">発表日</label>
-    <input type="text" class="form-control" id="validationCustom05" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
+  <h3>患者検索</h3>
+    <%= search_form_for @q, url: search_patients_path do |f| %>
+    <%= f.label :kana01_cont, '患者フリガナ' %>
+    <%= f.search_field :kana01_cont %>
+    <br>
+    <%= f.label :gender, '性別' %>
+    <%= f.radio_button :gender_eq, '' %>指定なし
+    <%= f.radio_button :gender_eq, '男' %>男
+    <%= f.radio_button :gender_eq, '女' %>女
+    <%= f.radio_button :gender_eq, '不明' %>不明
+    <br>
+    <%= f.label :age_cont, '年齢' %>
+    <%= f.radio_button :age, '10歳未満' %>10歳未満
+    <%= f.radio_button :age, '10歳代' %>10歳代
+    <%= f.radio_button :age, '20歳代' %>20歳代
+    <%= f.radio_button :age, '30歳代' %>30歳代
+    <%= f.radio_button :age, '40歳代' %>40歳代
+    <%= f.radio_button :age, '50歳代' %>50歳代
+    <%= f.radio_button :age, '60歳代' %>60歳代
+    <%= f.radio_button :age, '70歳代以上' %>70歳代以上
+    <br>
+    <%= f.label :belong_id_cont, '担当保健所' %>
+    <%= f.collection_select(:belong_id_eq, Belong.all, :id, :name, include_blank: '指定なし' )%>
+    <br>
+    <%= f.submit '検索' %>
+    <% end %>
 </form>
 
-<%#ここから%>
-<span class="btn">患者一覧</span>
+<%#患者一覧を表形式で表示%>
+<span class="btn">患者一覧(Excel出力可能)</span>
+<%= button_to excel_patients_path(format: :xlsx), method: :get do %>
+      エクセル出力
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr align="center">
-      <th scope="col">#</th>
+      <th scope="col">No.</th>
       <th scope="col">患者フリガナ</th>
       <th scope="col">患者氏名</th>
       <th scope="col">性別</th>

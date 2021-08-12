@@ -3,13 +3,12 @@
   width: 100%;
 }
 
-/*.detail-patient {
-  width: 20%;
-  background-color: #eee;
-  border: 1px solid #dedede;
+.btn {
+  margin-top: 20px;
+  color: #fff;
+  background-color: #ccc;
   font-size: 14px;
-  text-align: center;
-} */
+}
 
 .tab-wrap {
   display: flex;
@@ -36,9 +35,4 @@
 /* ラジオボタン非表示 */
 .tab-switch {
   display: none;
-}
-
-/* 患者じょうほう表の */
-.input-name {
-  background-color: white;
 }
