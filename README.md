@@ -20,6 +20,20 @@ _HMC2_
   自分がこの仕事に携わっており、現在のシステムより簡単に患者情報を管理できるようにしたいと感じていた。このシステムを担当している同僚から話を聞き、使いづらい部分を反映した。さらに、患者の情報分析や資料作りをする中でエクセルで管理や作業することがあり、システムからエクセルが出力できれば作業がしやすいと考えた。  
   また、自身の都道府県のHPはコロナ情報がわかりずらく、トップページでグラフなどを表示し見やすくならないかと考えた。  
 
+## DEMO
+　　　　　　　トップページ
+<img width="1435" alt="トップページ" src="https://user-images.githubusercontent.com/80326285/129468146-776a86f5-bf1f-43b5-b277-973efd71de62.png">  
+    患者新規登録
+<img width="718" alt="新規患者登録" src="https://user-images.githubusercontent.com/80326285/129468157-ba8f7287-71b8-4c96-be70-cbef0db7665e.png">
+    患者詳細情報
+<img width="720" alt="患者詳細画面" src="https://user-images.githubusercontent.com/80326285/129468155-b3a5bb8b-6580-46bd-997a-16ab8b55adc0.png">
+　　　　　　　　患者情報一覧
+　<img width="717" alt="患者一覧" src="https://user-images.githubusercontent.com/80326285/129468153-56c64bcc-93cd-4e15-a18a-b3ba31536171.png">
+ 　　　　　　患者情報一覧エクセル出力
+<img width="1436" alt="Excel出力画面" src="https://user-images.githubusercontent.com/80326285/129468149-495fe9b1-0d02-44cc-9e69-a2db82b5e990.png">
+
+
+
 ## 工夫したポイント  
   常にユーザーがこのアプリを使うことを考えて、患者情報の項目の数の適正化に努めた。
   アプリの趣旨を鑑みてビューを出来るだけ簡素なものとした。
