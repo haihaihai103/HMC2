@@ -12,6 +12,9 @@ _HMC2_
 
 ## 本番環境
 ・URL：http://52.196.174.211/  
+・basic認証  
+    ID:admin
+    pass:2222
 ・テストアカウント  
     Email:aaa@aaa  
     pass:11111a  
